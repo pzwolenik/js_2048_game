@@ -248,12 +248,21 @@ class Game {
       return true;
     }
 
-    for (let i = 0; i < this.board.length - 1; i++) {
-      for (let j = 0; j < this.board[i].length - 1; j++) {
-        const horizontal = this.board[i][j] === this.board[i][j + 1];
-        const vertical = this.board[i][j] === this.board[i + 1][j];
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board[i].length; j++) {
+        // Horizontal
+        if (
+          j < this.board[i].length - 1 &&
+          this.board[i][j] === this.board[i][j + 1]
+        ) {
+          return true;
+        }
 
-        if (horizontal || vertical) {
+        // Vertical
+        if (
+          i < this.board.length - 1 &&
+          this.board[i][j] === this.board[i + 1][j]
+        ) {
           return true;
         }
       }
